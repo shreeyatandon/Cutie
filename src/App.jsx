@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area, CartesianGrid } from "recharts";
 
 // ── THEMES ─────────────────────────────────────────────────────────────────
-0e0e0","#aaaaaa","#ffffff","#888888"] },
+obsidian:      { name:"Obsidian",       bg:"#111111", card:"#1c1c1e", accent:"#e0e0e0", accent2:"#aaaaaa", text:"#f2f2f7", sub:"#8e8e93", border:"#2c2c2e", nav:"#1c1c1e", shadow:"rgba(0,0,0,0.5)",          chart:["#e0e0e0","#aaaaaa","#ffffff","#888888"] },
   iosLight: { name:"iOS Light", bg:"#f2f2f7", card:"#ffffff", accent:"#007aff", accent2:"#34aadc", text:"#000000", sub:"#6d6d72", border:"#c6c6c8", nav:"#ffffff", shadow:"rgba(0,0,0,0.08)", chart:["#007aff","#34aadc","#5856d6","#ff9500"] },
   iosDark:  { name:"iOS Dark",  bg:"#000000", card:"#1c1c1e", accent:"#0a84ff", accent2:"#30b0c7", text:"#ffffff", sub:"#8e8e93", border:"#38383a", nav:"#1c1c1e", shadow:"rgba(0,0,0,0.6)", chart:["#0a84ff","#30b0c7","#5e5ce6","#ff9f0a"] },
   matcha:   { name:"Matcha",    bg:"#f0f4ee", card:"#ffffff", accent:"#4a7c59", accent2:"#78a882", text:"#1a2e1a", sub:"#4a6a4a", border:"#b8d4b8", nav:"#e4eedc", shadow:"rgba(74,124,89,0.15)", chart:["#4a7c59","#78a882","#2a5a39","#a8c8a8"] },
