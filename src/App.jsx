@@ -1,4 +1,22 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+
+// ── THEMES ─────────────────────────────────────────────────────────────────
+const THEMES = {
+  cosmicYogi:    { name:"Cosmic Yogi",    bg:"#f5f0ea", card:"#fffcf7", accent:"#b07850", accent2:"#d4a878", text:"#2c1f0e", sub:"#7a5c3a", border:"#e0cdb0", nav:"#f0e8d8", shadow:"rgba(176,120,80,0.18)", chart:["#b07850","#d4a878","#6a4a28","#8a6840"] },
+  warmEarthy:    { name:"Warm Earthy",    bg:"#f7f0e8", card:"#ffffff", accent:"#c4724a", accent2:"#e0a878", text:"#2a1808", sub:"#7a5040", border:"#e8cdb0", nav:"#f2e4d0", shadow:"rgba(196,114,74,0.15)",  chart:["#c4724a","#e0a878","#8a4020","#d4906a"] },
+  coolCosmic:    { name:"Cool Cosmic",    bg:"#0e0e1a", card:"#16182e", accent:"#8b78d0", accent2:"#b0a0e8", text:"#e8e4f8", sub:"#9090c0", border:"#2a2850", nav:"#12122a", shadow:"rgba(139,120,208,0.25)", chart:["#8b78d0","#b0a0e8","#5a48a0","#c8b8f8"] },
+  neutralSacred: { name:"Neutral Sacred", bg:"#faf8f4", card:"#ffffff", accent:"#c8a84a", accent2:"#e0c878", text:"#1a1610", sub:"#6a5c40", border:"#e4d8b8", nav:"#f4f0e4", shadow:"rgba(200,168,74,0.15)",  chart:["#c8a84a","#e0c878","#8a7020","#d4b860"] },
+  blush:         { name:"Blush",          bg:"#fff5f5", card:"#ffffff", accent:"#e8a0a0", accent2:"#f4c2c2", text:"#4a3030", sub:"#8a6060", border:"#f0d0d0", nav:"#fdeaea", shadow:"rgba(232,160,160,0.15)", chart:["#e8a0a0","#f4c2c2","#c07070","#a04040"] },
+  sage:          { name:"Sage",           bg:"#f4f8f4", card:"#ffffff", accent:"#7aaa7a", accent2:"#a8c8a8", text:"#2a3a2a", sub:"#5a7a5a", border:"#c8dcc8", nav:"#e8f4e8", shadow:"rgba(122,170,122,0.15)", chart:["#7aaa7a","#a8c8a8","#4a8a4a","#2a6a2a"] },
+  lavender:      { name:"Lavender",       bg:"#f6f4ff", card:"#ffffff", accent:"#9b87d0", accent2:"#c4b5f0", text:"#2e2a4a", sub:"#6a5a90", border:"#d8d0f0", nav:"#ede8ff", shadow:"rgba(155,135,208,0.15)", chart:["#9b87d0","#c4b5f0","#6a57a0","#4a3780"] },
+  midnight:      { name:"Midnight",       bg:"#0f1624", card:"#1a2540", accent:"#4f8ef7", accent2:"#2563eb", text:"#e8eef8", sub:"#8899bb", border:"#2a3a60", nav:"#131d35", shadow:"rgba(0,0,0,0.4)",         chart:["#4f8ef7","#2563eb","#7ab0ff","#a0c8ff"] },
+  obsidian:      { name:"Obsidian",       bg:"#111111", card:"#1c1c1e", accent:"#e0e0e0", accent2:"#aaaaaa", text:"#f2f2f7", sub:"#8e8e93", border:"#2c2c2e", nav:"#1c1c1e", shadow:"rgba(0,0,0,0.5)",         chart:["#e0e0e0","#aaaaaa","#ffffff","#888888"] },
+  iosLight:      { name:"iOS Light",      bg:"#f2f2f7", card:"#ffffff", accent:"#007aff", accent2:"#34aadc", text:"#000000", sub:"#6d6d72", border:"#c6c6c8", nav:"#ffffff", shadow:"rgba(0,0,0,0.08)",         chart:["#007aff","#34aadc","#5856d6","#ff9500"] },
+  iosDark:       { name:"iOS Dark",       bg:"#000000", card:"#1c1c1e", accent:"#0a84ff", accent2:"#30b0c7", text:"#ffffff", sub:"#8e8e93", border:"#38383a", nav:"#1c1c1e", shadow:"rgba(0,0,0,0.6)",         chart:["#0a84ff","#30b0c7","#5e5ce6","#ff9f0a"] },
+  matcha:        { name:"Matcha",         bg:"#f0f4ee", card:"#ffffff", accent:"#4a7c59", accent2:"#78a882", text:"#1a2e1a", sub:"#4a6a4a", border:"#b8d4b8", nav:"#e4eedc", shadow:"rgba(74,124,89,0.15)",    chart:["#4a7c59","#78a882","#2a5a39","#a8c8a8"] },
+  sunset:        { name:"Sunset",         bg:"#fdf0e8", card:"#ffffff", accent:"#d4845a", accent2:"#e8b090", text:"#3a2018", sub:"#8a5a3a", border:"#f0c8a8", nav:"#fde8d8", shadow:"rgba(212,132,90,0.15)",   chart:["#d4845a","#e8b090","#a05030","#f0c8a8"] },
+  arctic:        { name:"Arctic",         bg:"#eef4f8", card:"#ffffff", accent:"#5aa0c0", accent2:"#90c4d8", text:"#1a2a38", sub:"#4a7a98", border:"#b8d4e4", nav:"#dceef8", shadow:"rgba(90,160,192,0.15)",   chart:["#5aa0c0","#90c4d8","#2a7090","#b8e4f8"] },
+};
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area, CartesianGrid } from "recharts";
 
 // ── THEMES ─────────────────────────────────────────────────────────────────
